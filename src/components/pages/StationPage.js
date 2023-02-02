@@ -66,7 +66,7 @@ const StationPage = () => {
             return;
         }
         setNameError('');
-        const decimalRegex = /^\d+(?:\.\d{0,1})?$/;
+        const decimalRegex = /^(?:0\.[1-9]|[1-9]\d{0,3}(?:\.\d{1})?|10000)$/;
         if (!decimalRegex.test(duration)) {
             enqueueSnackbar("Es sind nur Dezimalzahlen mit einer Kommastelle erlaubt: z.B. 45.3", { variant: 'warning' })
             setDurationError("Falsche Eingabe!")
