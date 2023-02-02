@@ -28,7 +28,7 @@ const ProductionLinePage = () => {
 
     const dispatch = useDispatch();
 
-    const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     useEffect(() => {
         dispatch(findAllRobots())
@@ -85,8 +85,11 @@ const ProductionLinePage = () => {
                 carName: "none"
             }
         }
-
+        closeSnackbar()
+        enqueueSnackbar("Produktionslinie erfolgreich erstellt!", { variant: 'success' })
         dispatch(saveProductionLine(prodLine))
+        setName("")
+        setSelectedSteps([])
     };
 
     const handleChange = (event) => {
@@ -145,7 +148,6 @@ const ProductionLinePage = () => {
                         <Box sx={{ mt: 1 }}>
                             <TextField
                                 margin="normal"
-                                required
                                 fullWidth
                                 id="name"
                                 label="Name"

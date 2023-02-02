@@ -18,24 +18,26 @@ export default function Create() {
 
     const dispatch = useDispatch();
 
-    const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const [error, setError] = React.useState('');
     const [name, setName] = React.useState("");
 
     const handleSubmit = (event) => {
-        const nameRegex = /^[a-zA-Z ]{2,50}$/;
         const employee = {
             name: name
         }
+        const nameRegex = /^[a-zA-Z ]{2,50}$/;
         if (!nameRegex.test(employee.name)) {
-            enqueueSnackbar("Der Name muss aus mindestens 2 Buchstaben bestehen und darf maximal 50 Zeichen lang sein!", {variant: 'warning'})
+            enqueueSnackbar("Der Name muss aus mindestens 2 Buchstaben bestehen und darf maximal 50 Zeichen lang sein!", { variant: 'warning' })
             setError("Falsche Eingabe!");
             return;
         }
         setError('');
-        console.log(employee);
+        closeSnackbar()
+        enqueueSnackbar("Mitarbeiter erfolgreich erstellt!", { variant: 'success' })
         dispatch(saveEmployee(employee))
+        setName('')
     };
 
     const handleNameChange = (event) => {
@@ -63,7 +65,6 @@ export default function Create() {
                     <Box sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
-                            required
                             fullWidth
                             id="name"
                             label="Name"

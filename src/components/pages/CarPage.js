@@ -18,7 +18,7 @@ export default function CarPage() {
 
   const dispatch = useDispatch();
 
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
 
   const [name, setName] = React.useState("");
@@ -34,7 +34,7 @@ export default function CarPage() {
       return;
     }
     setNameError("");
-    const factorRegex = /^(0\.[1-9]|[1-9]\.[0-9])$/
+    const factorRegex = /^(0\.[1-9]|[1-9](\.[0-9])?|[1-9])$/
     if (!factorRegex.test(factor)) {
       enqueueSnackbar("Es sind nur Dezimalzahlen mit einer Kommastelle von 0.1 - 9.9 erlaubt", { variant: 'warning' })
       setFactorError("Falsche Eingabe!")
@@ -45,8 +45,11 @@ export default function CarPage() {
       name: name,
       multiplier: factor
     }
-    console.log(car);
+    closeSnackbar()
+    enqueueSnackbar("Fahrzeug erfolgreich erstellt!", { variant: 'success' })
     dispatch(saveCar(car))
+    setName("")
+    setFactor("")
   };
 
   const handleNameChange = (event) => {
@@ -78,26 +81,26 @@ export default function CarPage() {
           <Box sx={{ mt: 1 }}>
             <TextField
               margin="normal"
-              required
               fullWidth
               id="model"
               label="Modell"
               name="model"
               autoComplete="name"
               autoFocus
+              value={name}
               onChange={handleNameChange}
               error={Boolean(nameError)}
               helperText={nameError}
             />
             <TextField
               margin="normal"
-              required
               fullWidth
               name="factor"
               label="Faktor"
               type="number"
               id="factor"
               autoComplete="number"
+              value={factor}
               onChange={handleFactorChange}
               error={Boolean(factorError)}
               helperText={factorError}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "http://localhost:8080/api/v1/stations"
+const API_URL = "https://prosim-backend.azurewebsites.net/api/v1/stations"
 
 const findAll = async () => {
     return await axios.get(API_URL)

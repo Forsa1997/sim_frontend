@@ -24,7 +24,7 @@ const theme = createTheme();
 const StationPage = () => {
 
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const employees = useSelector(state => state.employeeReducer.employees)
 
@@ -33,9 +33,13 @@ const StationPage = () => {
         setFilteredEmployees(employees.filter(employee => !employee.assigned))
     }, [dispatch, employees]);
 
+    // useEffect(() => {
+    //     dispatch(findAllEmployees())
+    //     setFilteredEmployees(employees.filter(employee => !employee.assigned))
+    // }, [])
+
     const filterNonSelectedEmployees = () => {
-        return employees.filter(employee => !employee.assigned
-        )
+        return employees.filter(employee => !employee.assigned)
     }
 
     const handleReloadFilteredEmployees = () => {
@@ -70,11 +74,13 @@ const StationPage = () => {
         }
         setDurationError('');
         dispatch(saveStation(station))
-        setName("");
-        setDuration("");
+        closeSnackbar()
+        enqueueSnackbar("Arbeitsschritt erfolgreich erstellt!", { variant: 'success' })
         setSelectedEmployees([]);
         dispatch(findAllEmployees());
         handleReloadFilteredEmployees();
+        setName("");
+        setDuration("");
     };
 
     const handleSelectedEmployeesChange = (event) => {
@@ -119,7 +125,6 @@ const StationPage = () => {
                             <FormControl fullWidth>
                                 <TextField
                                     margin="normal"
-                                    required
                                     fullWidth
                                     id="name"
                                     label="Name"
@@ -134,7 +139,6 @@ const StationPage = () => {
                                 />
                                 <TextField
                                     margin="normal"
-                                    required
                                     fullWidth
                                     label="Arbeitsdauer"
                                     name="duration"

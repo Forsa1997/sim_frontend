@@ -74,7 +74,7 @@ const BasicAccordion = (props) => {
         >
           <Grid container direction="row" alignItems="center">
             <Grid container direction="row" alignItems="center">
-              <Button disabled={props.status === "incomplete"} style={{ marginLeft: '8px', marginRight: "8px" }}>{props.simStatus === "stopped" ? <PlayCircleFilledWhiteSharpIcon onClick={() => startSimulation()} style={{ color: 'green', fontSize: '40px' }} />
+              <Button disabled={props.status=== "incomplete"} style={{ marginLeft: '8px', marginRight: "8px" }}>{props.simStatus === "stopped" ? <PlayCircleFilledWhiteSharpIcon onClick={() => startSimulation()} style={{ color: 'green', fontSize: '40px' }} />
                 : <StopCircleSharpIcon onClick={() => stopSimulation()} style={{ color: 'red', fontSize: '40px' }} />}</Button>
               Status: {props.status === "runnable" ? <CheckCircleOutlineSharpIcon style={{ marginLeft: '8px', marginRight: "8px", color: 'green', fontSize: '40px' }} />
                 : <ReportGmailerrorredSharpIcon style={{ marginLeft: '8px', marginRight: "8px", color: 'red', fontSize: '40px' }} />}

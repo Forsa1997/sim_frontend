@@ -18,7 +18,7 @@ export default function RobotPage() {
 
     const dispatch = useDispatch();
 
-    const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const [name, setName] = React.useState("");
     const [nameError, setNameError] = React.useState("");
@@ -44,8 +44,11 @@ export default function RobotPage() {
             name: name,
             duration: duration
         }
-        console.log(robot);
+        closeSnackbar()
+        enqueueSnackbar("Roboter erfolgreich erstellt!", { variant: 'success' })
         dispatch(saveRobot(robot))
+        setName("")
+        setDuration("")
     };
 
     const handleNameChange = (event) => {
@@ -77,13 +80,13 @@ export default function RobotPage() {
                     <Box sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
-                            required
                             fullWidth
                             id="name"
                             label="Name"
                             name="name"
                             autoComplete="name"
                             autoFocus
+                            value={name}
                             onChange={handleNameChange}
                             sx={{ mt: 3, mb: 2 }}
                             error={Boolean(nameError)}
@@ -91,13 +94,13 @@ export default function RobotPage() {
                         />
                         <TextField
                             margin="normal"
-                            required
                             fullWidth
                             name="duration"
                             label="Arbeitsdauer"
                             type="number"
                             id="duration"
                             autoComplete="number"
+                            value={duration}
                             onChange={handleDurationChange}
                             sx={{ mt: 3, mb: 2 }}
                             error={Boolean(durationError)}
