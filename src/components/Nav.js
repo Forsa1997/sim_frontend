@@ -44,7 +44,7 @@ function ResponsiveAppBar() {
         <AppBar position="static">
             <Container>
                 <Toolbar disableGutters>
-                    <PrecisionManufacturingSharpIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <PrecisionManufacturingSharpIcon sx={{ display: 'flex', mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -52,7 +52,7 @@ function ResponsiveAppBar() {
                         href="/"
                         sx={{
                             mr: 2,
-                            display: { xs: 'none', md: 'flex' },
+                            display: 'flex',
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
@@ -62,7 +62,7 @@ function ResponsiveAppBar() {
                     >
                         PROSIM
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 1, display: 'flex' }}>
                         <Button
                             key="productionLine"
                             onClick={navigateToProductionLine}
