@@ -144,6 +144,7 @@ const StationPage = () => {
                                     name="duration"
                                     autoComplete="number"
                                     autoFocus
+                                    type="number"
                                     value={duration}
                                     onChange={handleDurationChange}
                                     sx={{ mt: 3, mb: 2 }}
