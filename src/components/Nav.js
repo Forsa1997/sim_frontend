@@ -70,7 +70,7 @@ function ResponsiveAppBar() {
                         >
                             <Grid container direction="row" alignItems="center">
                                 <Typography>Produktionslinie</Typography>
-                                <PrecisionManufacturingSharpIcon />
+                                <PrecisionManufacturingSharpIcon sx={{ml: 1, mr: 3}} />
                             </Grid>
                         </Button>
                         <Button
@@ -80,7 +80,7 @@ function ResponsiveAppBar() {
                         >
                             <Grid container direction="row" alignItems="center">
                                 <Typography>Arbeitsschritt</Typography>
-                                <FactorySharpIcon />
+                                <FactorySharpIcon sx={{ml: 1, mr: 3}}/>
                             </Grid>
                         </Button>
                         <Button
@@ -90,7 +90,7 @@ function ResponsiveAppBar() {
                         >
                             <Grid container direction="row" alignItems="center">
                                 <Typography>Mitarbeiter</Typography>
-                                <PersonIcon />
+                                <PersonIcon sx={{ml: 1, mr: 3}}/>
                             </Grid>
                         </Button>
                         <Button
@@ -100,7 +100,7 @@ function ResponsiveAppBar() {
                         >
                             <Grid container direction="row" alignItems="center">
                                 <Typography>Roboter</Typography>
-                                <SmartToySharpIcon />
+                                <SmartToySharpIcon sx={{ml: 1, mr: 3}}/>
                             </Grid>
                         </Button>
                         <Button
@@ -110,7 +110,7 @@ function ResponsiveAppBar() {
                         >
                             <Grid container direction="row" alignItems="center">
                                 <Typography>Fahrzeuge</Typography>
-                                <DirectionsCarSharpIcon />
+                                <DirectionsCarSharpIcon sx={{ml: 1}}/>
                             </Grid>
                         </Button>
                     </Box>
