@@ -51,7 +51,6 @@ const BasicAccordion = (props) => {
   };
 
   const startSimulation = () => {
-    console.log(props.prodId, selectedMultiplier, car.id)
     dispatch(startProductionLine(props.prodId, selectedMultiplier, car.id))
   }
 
